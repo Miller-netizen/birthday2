@@ -1,0 +1,120 @@
+/* style.css */
+body {
+    margin: 0;
+    overflow: hidden; /* 隐藏滚动条，让烟花充满整个屏幕 */
+    background: #0a0a2a; /* 深蓝色夜空背景 */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#fireworks-canvas {
+    position: fixed; /* 固定定位，覆盖整个屏幕 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* 确保烟花在最底层 */
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10; /* 让内容在烟花之上 */
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3); /* 半透明背景，增加层次感 */
+    border-radius: 15px;
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+    animation: fadeIn 2s ease-in-out;
+}
+
+.birthday-image {
+    width: 200px; /* 图片宽度，可以调整 */
+    height: 200px; /* 图片高度，可以调整 */
+    border-radius: 50%; /* 圆形图片 */
+    border: 5px solid #fff;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    object-fit: cover; /* 确保图片不变形 */
+    animation: floatImage 6s ease-in-out infinite; /* 添加漂浮动画 */
+}
+
+.happy-birthday {
+    margin-top: 20px;
+    font-size: 2.5em;
+    color: #f0e68c; /* 卡其色 */
+    text-shadow: 0 0 10px #f0e68c, 0 0 20px #f0e68c;
+    animation: pulseText 2s ease-in-out infinite;
+}
+
+
+/* "天马行空" 的形状 */
+.shape {
+    position: fixed; /* 固定定位，让它们在页面上自由漂浮 */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 5; /* 在烟花和内容之间 */
+    animation: floatShape 10s linear infinite;
+    pointer-events: none; /* 确保它们不干扰点击 */
+}
+
+.shape1 {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+    bottom: -100px; /* 从底部开始 */
+    animation-duration: 12s;
+    animation-delay: 0s;
+    background: rgba(173, 216, 230, 0.2); /* 浅蓝色 */
+}
+
+.shape2 {
+    width: 50px;
+    height: 50px;
+    right: 15%;
+    bottom: -100px;
+    animation-duration: 8s;
+    animation-delay: 3s;
+    background: rgba(255, 182, 193, 0.2); /* 浅粉色 */
+}
+
+.shape3 {
+    width: 120px;
+    height: 120px;
+    left: 40%;
+    bottom: -150px;
+    animation-duration: 15s;
+    animation-delay: 5s;
+    background: rgba(255, 255, 0, 0.15); /* 黄色 */
+}
+
+/* 定义动画 */
+@keyframes floatImage {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px) scale(1.05); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes floatShape {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(360deg); /* 向上移动并旋转 */
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseText {
+    0% { text-shadow: 0 0 10px #f0e68c, 0 0 20px #f0e68c; }
+    50% { text-shadow: 0 0 15px #fff, 0 0 30px #fff; }
+    100% { text-shadow: 0 0 10px #f0e68c, 0 0 20px #f0e68c; }
+}
